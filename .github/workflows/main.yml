@@ -40,6 +40,7 @@ jobs:
           snyk code test || true
       - name: Snyk Container # Rename your image, for testing and failing please add snyk container test before snyk container monitor
         run: |
+          npm install 
           docker build . -t mssnyk-goof:latest
           snyk container monitor mssnyk-goof:latest --file=Dockerfile
           
