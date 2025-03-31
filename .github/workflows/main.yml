@@ -40,12 +40,10 @@ steps:
   - name: Snyk Code # Remove || true to fail if there are vulnerabilities
     run: |
       snyk code test || true
-      
-#Snyk Container
   - name: Snyk Container # Rename your image, for testing and failing please add snyk container test before snyk container monitor
     run: |
-      docker build . -t snyk-goof:latest
-      snyk container test snyk-goof:lastest --file=Dockerfile
+      docker build . -t MSsnyk-goof:latest
+      snyk container monitor MSsnyk-goof:latest --file=Dockerfile
       
   - name: Snyk IaC # Remove || true to fail if there are vulnerabilities
     run: |
